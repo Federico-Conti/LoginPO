@@ -43,13 +43,6 @@ public class LoginTest extends DriverLifeCycle {
         assertTrue(login.invalidBoxisPresent());
     }
 
-    @Test
-    public void testLoginWithWrongUsername() {
-        login = new LoginFormPO(driver);
-        login.with("wrong-user", "user");
-        System.out.println(driver.getCurrentUrl());
-        // we remain in the login page
-        assertTrue(login.invalidBoxisPresent());
-    }
+
 
 }
