@@ -11,7 +11,7 @@ import POs.LoginSuccessPO;
  * Unit test for simple App.
  */
 public class LoginTest extends DriverLifeCycle {
- 
+
     private LoginFormPO login;
     private LoginSuccessPO loginSuccess;
 
@@ -31,13 +31,22 @@ public class LoginTest extends DriverLifeCycle {
         login.with("user", "error");
         System.out.println(driver.getCurrentUrl());
         // we remain in the login page
-        assertTrue(login.invalidBoxisPresent()); 
+        assertTrue(login.invalidBoxisPresent());
     }
 
     @Test
     public void testLoginWithEmptyFields() {
         login = new LoginFormPO(driver);
         login.with("", "");
+        System.out.println(driver.getCurrentUrl());
+        // we remain in the login page
+        assertTrue(login.invalidBoxisPresent());
+    }
+
+    @Test
+    public void testLoginWithWrongUsername() {
+        login = new LoginFormPO(driver);
+        login.with("wrong-user", "user");
         System.out.println(driver.getCurrentUrl());
         // we remain in the login page
         assertTrue(login.invalidBoxisPresent());
